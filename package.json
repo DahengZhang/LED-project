@@ -1,0 +1,23 @@
+{
+    "name": "led-project",
+    "version": "1.0.0",
+    "description": "2017-12 interest group LED-project",
+    "main": "app.js",
+    "scripts": {
+        "dev": "supervisor app.js",
+        "server": "node app.js"
+    },
+    "keywords": [
+        "node",
+        "Paspberry Pi"
+    ],
+    "author": "DahengZhang XiaohuaLi MingdongHu LiuhuaZhu",
+    "license": "MIT",
+    "dependencies": {
+        "koa": "^2.4.1",
+        "koa-bodyparser": "^4.2.0",
+        "koa-router": "^7.3.0",
+        "koa-static": "^4.0.2",
+        "pigpio": "^0.6.3"
+    }
+}
