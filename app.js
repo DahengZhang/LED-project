@@ -2,12 +2,13 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const BodyParser = require('koa-bodyparser');
 const Serve = require('koa-static');
-// const Gpio = require('pigpio').Gpio();
+
+const Switch = require('./routes/switch');
+const Brightness = require('./routes/brightness');
 
 const port = 3000;
 const app = new Koa();
 const router = new Router();
-// const LED = new Gpio(17, { mode: Gpio.OUTPUT });
 
 app
    .use(BodyParser())
@@ -15,10 +16,9 @@ app
    .use(router.allowedMethods())
    .use(Serve(__dirname + '/public'));
 
-
-router.post('/api', (ctx) => {
-   ctx.body = '请求成功';
-});
+router
+   .use('/api/switch', Switch.routes(), Switch.allowedMethods())
+   .use('/api/brightness', Brightness.routes(), Brightness.allowedMethods());
 
 app.listen(port, () => {
    console.log(`Server running at localhost:${port}`);
